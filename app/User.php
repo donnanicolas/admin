@@ -13,6 +13,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     use Authenticatable, CanResetPassword;
 
     /**
+     * The connection for this model
+     * There is no need in the user, but just to be clear
+     *
+     * @var string
+     */
+    protected $connection = 'sqlite';
+
+    /**
      * The database table used by the model.
      *
      * @var string

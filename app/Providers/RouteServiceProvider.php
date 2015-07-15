@@ -27,6 +27,14 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot($router);
+
+        view()->composer('layouts.admin', function ($view) {
+            $view->with('avatarId', rand(1, 5));
+        });
+
+        $router->bind('domains', function ($domain) {
+            return \App\PostfixDomain::where('domain', $domain)->firstOrFail();
+        });
     }
 
     /**

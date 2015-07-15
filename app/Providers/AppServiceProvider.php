@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('domain', function ($attribute, $value) {
+
+
+            $domainRegexp = "^((?! -)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$^";
+            return (bool) preg_match($domainRegexp, $value);
+        });
     }
 
     /**
