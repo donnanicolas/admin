@@ -47,7 +47,7 @@
             </thead>
             <tbody>
                 @foreach($domain->mailboxesRel as $mailbox)
-                <tr data-link="/postfix/mailboxes/{{ $mailbox->username }}">
+                <tr data-link="/postfix/domains/{{ $domain->domain }}/mailboxes/{{ $mailbox->username }}">
                     <td class="mdl-data-table__cell--non-numeric">{{ $mailbox->username }}</td>
                     <td class="mdl-data-table__cell--non-numeric">{{ $mailbox->name }}</td>
                     <td class="mdl-data-table__cell--non-numeric">{{ $mailbox->modified }}</td>
@@ -56,6 +56,12 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="md-cell md-cell--2-col">
+            <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+                href="/postfix/domains/{{ $domain->domain }}/mailboxes/create">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
     </div>
 </div>
 @endsection

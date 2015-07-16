@@ -187,5 +187,8 @@ a {
 .home-content .dns-pic .mdl-card__media {
   background-image: url('../../images/dns.jpg');
 }
+.delete-form {
+  display: inline-block;
+}
 
 /*# sourceMappingURL=admin.css.map */

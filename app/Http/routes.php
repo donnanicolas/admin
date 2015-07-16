@@ -15,6 +15,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/home', 'PagesController@home');
 
 Route::resource('postfix/domains', 'PostfixDomainController');
+Route::resource('postfix/domains.mailboxes', 'PostfixMailboxController');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

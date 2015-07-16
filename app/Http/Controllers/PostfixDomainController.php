@@ -16,7 +16,7 @@ class PostfixDomainController extends Controller
      * Set up the need for auth, but only in home
      */
     public function __construct() {
-        $this->middleware('auth', ['only' => 'home']);
+        $this->middleware('auth');
     }
 
     /**
@@ -26,7 +26,7 @@ class PostfixDomainController extends Controller
      */
     public function index()
     {
-        $domains = PostfixDomain::all();
+        $domains = PostfixDomain::listAll()->get();
         return view('postfix.domain.index')->with(compact('domains'));
     }
 

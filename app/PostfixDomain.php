@@ -57,6 +57,15 @@ class PostfixDomain extends Model
     // ];
 
     /**
+     * Returns all the domains except the 'ALL'
+     *
+     */
+     public function scopeListAll($query)
+     {
+         return $query->where('domain', '!=', 'ALL');
+     }
+
+    /**
      * Get the mailboxes of a domain
      * We need a different name since the table already has a mailboxes value
      */

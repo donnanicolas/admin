@@ -26,4 +26,18 @@ class PostfixAlias extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Set the attributes that can be mass filled
+     *
+     * @var array
+     */
+     public $fillable = [
+        'address',
+        'domain',
+        'created',
+        'modified',
+        'goto',
+        'active'
+     ];
 }

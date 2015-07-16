@@ -35,6 +35,10 @@ class RouteServiceProvider extends ServiceProvider
         $router->bind('domains', function ($domain) {
             return \App\PostfixDomain::where('domain', $domain)->firstOrFail();
         });
+
+        $router->bind('mailboxes', function ($mailbox) {
+            return \App\PostfixMailbox::where('username', $mailbox)->firstOrFail();
+        });
     }
 
     /**

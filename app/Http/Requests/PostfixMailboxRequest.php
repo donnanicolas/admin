@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PostfixDomainRequest extends Request
+class PostfixMailboxRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,16 @@ class PostfixDomainRequest extends Request
     public function rules()
     {
         $rules = [
+            'username' => 'required|email',
+            'name' => 'required',
             'domain' => 'required|domain',
-            'description' => 'required',
-            'mailboxes' => 'required|integer|min:-1|max:100',
-            'aliases' => 'required|integer|min:-1|max:100',
+            'password' => 'required',
+            'repassword' => 'required|same:password',
         ];
 
         //If the request is a post, then is a create, so we need the unique validation
         if (Request::isMethod('POST')) {
-            $rules['domain'] .= '|unique:postfix.domain,domain';
+            $rules['username'] .= '|unique:postfix.mailbox,username';
         }
 
         return $rules;
