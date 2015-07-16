@@ -24,7 +24,6 @@ class PostfixDomainRequest extends Request
     public function rules()
     {
         $rules = [
-            'domain' => 'required|domain',
             'description' => 'required',
             'mailboxes' => 'required|integer|min:-1|max:100',
             'aliases' => 'required|integer|min:-1|max:100',
@@ -32,7 +31,7 @@ class PostfixDomainRequest extends Request
 
         //If the request is a post, then is a create, so we need the unique validation
         if (Request::isMethod('POST')) {
-            $rules['domain'] .= '|unique:postfix.domain,domain';
+            $rules['domain'] = 'required|domain|unique:postfix.domain,domain';
         }
 
         return $rules;

@@ -40,7 +40,6 @@ class PostfixDomain extends Model
      * @var array
      */
      public $fillable = [
-        'domain',
         'description',
         'mailboxes',
         'aliases'

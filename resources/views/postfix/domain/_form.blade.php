@@ -10,7 +10,7 @@
     </div>
     @endif
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        {!! Form::text('domain', null, ['class' => 'mdl-textfield__input']) !!}
+        {!! Form::text('domain', null, ['class' => 'mdl-textfield__input', isset($domain) ? 'disabled' : '']) !!}
         {!! Form::label('domain', 'Dominio:', ['class' => 'mdl-textfield__label']) !!}
     </div>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

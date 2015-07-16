@@ -48,7 +48,9 @@ class PostfixDomainController extends Controller
      */
     public function store(PostfixDomainRequest $request)
     {
-        $domain = PostfixDomain::create($request->all());
+        $domain = new PostfixDomain($request->all());
+        $domain->domain = $request->input('domain');
+        $domain->save();
         return redirect()->action('PostfixDomainController@index');
     }
 

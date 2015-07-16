@@ -103,23 +103,7 @@ class PostfixMailboxController extends Controller
      */
     public function update(PostfixDomain $domain, PostfixMailbox $mailbox, Request $request)
     {
-        $errors = [];
-        $exploded = explode('@', $request->input('username'), 2);
-
-        if ( $exploded[1] != $domain->domain ) {
-            $errors['username'] = 'Bad Domain';
-        }
-
-        if ( !empty($errors) ) {
-
-            return redirect()->action('PostfixMailboxController@create', [$domain->domain])
-                ->withErrors($errors)
-                ->withInput();
-        }
-
         $mailbox->fill($request->all());
-        $mailbox->local_part = $exploded[0];
-        $mailbox->maildir = $request->input('username') . '/';
         $mailbox->modified = Carbon::now();
 
         $mailbox->save();

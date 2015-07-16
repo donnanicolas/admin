@@ -24,7 +24,6 @@ class PostfixMailboxRequest extends Request
     public function rules()
     {
         $rules = [
-            'username' => 'required|email',
             'name' => 'required',
             'domain' => 'required|domain',
             'password' => 'required',
@@ -33,7 +32,7 @@ class PostfixMailboxRequest extends Request
 
         //If the request is a post, then is a create, so we need the unique validation
         if (Request::isMethod('POST')) {
-            $rules['username'] .= '|unique:postfix.mailbox,username';
+            $rules['username'] = 'required|email|unique:postfix.mailbox,username';
         }
 
         return $rules;
