@@ -27,9 +27,9 @@
                 </div>
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button-warn">
-                    Borrar
-                </a>
+                {!! Form::open(['method' => 'DELETE', 'class' => 'delete-form', 'action' => ['PowerdnsDomainController@destroy', $domain->id]]) !!}
+                    {!! Form::submit('Borrar', ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button-warn']) !!}
+                {!! Form::close() !!}
                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                     href="/postfix/domains/{{$domain->domain}}/edit">
                     Editar

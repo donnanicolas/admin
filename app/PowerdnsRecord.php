@@ -6,6 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class PowerdnsRecord extends Model
 {
+
+    public static $Types = [
+        'A' => 'A',
+        'AAAA' => 'AAAA',
+        'CNAME' => 'CNAME',
+        'HINFO' => 'HINFO',
+        'MX' => 'MX',
+        'NAPTR' => 'NAPTR',
+        'NS' => 'NS',
+        'PTR' => 'PTR',
+        'SPF' => 'SPF',
+        'SRV' => 'SRV',
+        'SSHFP' => 'SSHFP',
+        'TXT' => 'TXT',
+        'RP' => 'RP',
+    ];
+
     /**
      * The connection for this model
      *
@@ -26,4 +43,32 @@ class PowerdnsRecord extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Set the attributes that can be mass filled
+     *
+     * @var array
+     */
+     public $fillable = [
+        'domain_id',
+        'content',
+        'type',
+        'name',
+        'ttl',
+        'prio',
+        'changeDate',
+        'disabled',
+        'ordername'
+     ];
+
+     public function getNameAttribute()
+     {
+         return str_replace(".{$this->domain->name}", '', $this->attributes['name']);
+     }
+
+     public function domain()
+     {
+         return $this->belongsTo('\App\PowerdnsDomain', 'domain_id');
+     }
+
 }

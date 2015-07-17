@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\PostfixDomain;
-use App\Http\Requests\PostfixDomainRequest;
+use App\PowerdnsDomain;
+use App\Http\Requests\PowerdnsDomainRequest;
 
-class PostfixDomainController extends Controller
+class PowerdnsDomainController extends Controller
 {
-
     /**
      * Set up the need for auth, but only in home
      */
@@ -26,8 +25,8 @@ class PostfixDomainController extends Controller
      */
     public function index()
     {
-        $domains = PostfixDomain::listAll()->get();
-        return view('postfix.domain.index')->with(compact('domains'));
+        $domains = PowerdnsDomain::all();
+        return view('powerdns.domain.index')->with(compact('domains'));
     }
 
     /**
@@ -37,7 +36,7 @@ class PostfixDomainController extends Controller
      */
     public function create()
     {
-        return view('postfix.domain.create');
+        return view('powerdns.domain.create');
     }
 
     /**
@@ -46,12 +45,10 @@ class PostfixDomainController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(PostfixDomainRequest $request)
+    public function store(PowerdnsDomainRequest $request)
     {
-        $domain = new PostfixDomain($request->all());
-        $domain->domain = $request->input('domain');
-        $domain->save();
-        return redirect()->action('PostfixDomainController@index');
+        PowerdnsDomain::create($request->all());
+        return redirect()->action('PowerdnsDomainController@index');
     }
 
     /**
@@ -60,9 +57,9 @@ class PostfixDomainController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(PostfixDomain $domain)
+    public function show(PowerdnsDomain $domain)
     {
-        return view('postfix.domain.show')->with(compact('domain'));
+        return view('powerdns.domain.show')->with(compact('domain'));
     }
 
     /**
@@ -71,9 +68,9 @@ class PostfixDomainController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit(PostfixDomain $domain)
+    public function edit(PowerdnsDomain $domain)
     {
-        return view('postfix.domain.edit')->with(compact('domain'));
+        return view('powerdns.domain.edit')->with(compact('domain'));
     }
 
     /**
@@ -83,10 +80,10 @@ class PostfixDomainController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(PostfixDomain $domain, PostfixDomainRequest $request)
+    public function update(PowerdnsDomain $domain, PowerdnsDomainRequest $request)
     {
         $domain->update($request->all());
-        return redirect()->action('PostfixDomainController@show', [$domain->domain]);
+        return redirect()->action('PowerdnsDomainController@show', [$domain->id]);
     }
 
     /**
@@ -95,9 +92,9 @@ class PostfixDomainController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(PostfixDomain $domain)
+    public function destroy(PowerdnsDomain $domain)
     {
         $domain->delete();
-        return redirect()->action('PostfixDomainController@index');
+        return redirect()->action('PowerdnsDomainController@index');
     }
 }

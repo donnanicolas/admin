@@ -17,6 +17,11 @@ Route::get('/home', 'PagesController@home');
 Route::resource('postfix/domains', 'PostfixDomainController');
 Route::resource('postfix/domains.mailboxes', 'PostfixMailboxController');
 
+Route::resource('powerdns/zones', 'PowerdnsDomainController');
+Route::resource('powerdns/zones.records', 'PowerdnsRecordController');
+
+//Route::resource('powerdns/domains', 'PowerdnsDomainController');
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController'

@@ -39,10 +39,10 @@
                 <a class="mdl-navigation__link" href="/home">
                     <i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home
                 </a>
-                <a class="mdl-navigation__link" href="/postfix/domains">
+                <a class="mdl-navigation__link" href="{{action("PowerdnsDomainController@index")}}">
                     <i class="mdl-color-text--blue-grey-400 material-icons">device_hub</i>DNS
                 </a>
-                <a class="mdl-navigation__link" href="/powerdns/domains">
+                <a class="mdl-navigation__link" href="{{action("PostfixDomainController@index")}}">
                     <i class="mdl-color-text--blue-grey-400 material-icons">email</i>Mailboxes
                 </a>
             </nav>

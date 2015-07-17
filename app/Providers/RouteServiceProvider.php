@@ -24,8 +24,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
-
         parent::boot($router);
 
         view()->composer('layouts.admin', function ($view) {
@@ -38,6 +36,14 @@ class RouteServiceProvider extends ServiceProvider
 
         $router->bind('mailboxes', function ($mailbox) {
             return \App\PostfixMailbox::where('username', $mailbox)->firstOrFail();
+        });
+
+        $router->bind('zones', function ($domain) {
+            return \App\PowerdnsDomain::findOrFail($domain);
+        });
+
+        $router->bind('records', function ($record) {
+            return \App\PowerdnsRecord::findOrFail($record);
         });
     }
 

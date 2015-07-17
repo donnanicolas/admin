@@ -26,4 +26,21 @@ class PowerdnsZone extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Set the attributes that can be mass filled
+     *
+     * @var array
+     */
+     public $fillable = [
+        'owner',
+        'domain_id',
+        'zoneTemplId'
+
+     ];
+
+     public function domain()
+     {
+         return $this->belongsTo('\App\PowerdnsDomain', 'domain_id');
+     }
 }

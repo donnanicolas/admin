@@ -52,7 +52,7 @@ return [
             'prefix'   => '',
         ],
 
-        'poweradmin' => [
+        'powerdns' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST_PD', 'localhost'),
             'database'  => env('DB_DATABASE_PD', 'forge'),

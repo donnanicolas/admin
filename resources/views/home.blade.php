@@ -6,7 +6,7 @@
         <div class="mdl-card dns-pic mdl-cell mdl-cell--6-col">
             <div class="mdl-card__media mdl-color-text--grey-50">
                 <h3>
-                    <h3><a href="entry.html">DNS</a></h3>
+                    <h3><a  href="{{action("PowerdnsDomainController@index")}}">DNS</a></h3>
                 </h3>
             </div>
             <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
@@ -18,7 +18,7 @@
             </div>
             <div class="mdl-card__actions mdl-card--border">
                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                    href="/postfix/domains">
+                    href="{{action("PowerdnsDomainController@index")}}">
                     Ver DNS
                 </a>
             </div>
@@ -26,7 +26,7 @@
         <div class="mdl-card email-pic mdl-cell mdl-cell--6-col">
             <div class="mdl-card__media mdl-color-text--grey-50">
                 <h3>
-                    <h3><a href="entry.html">Mailboxes</a></h3>
+                    <h3><a href="{{action("PostfixDomainController@index")}}">Mailboxes</a></h3>
                 </h3>
             </div>
             <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
@@ -37,7 +37,8 @@
                 </div>
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                     href="{{action("PostfixDomainController@index")}}">
                     Ver Mailboxes
                 </a>
             </div>
