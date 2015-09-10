@@ -65,7 +65,7 @@ class PowerdnsRecordController extends Controller
         $record->fill($request->all());
         $record->domain_id = $domain->id;
         $record->change_date = Carbon::now()->timestamp;
-        $record->name .= ".{$domain->name}";
+        $record->name = "{$domain->name}";
         $record->save();
 
         return redirect()->action('PowerdnsDomainController@show', $domain->id);
