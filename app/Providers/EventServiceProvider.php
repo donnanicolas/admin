@@ -85,7 +85,7 @@ class EventServiceProvider extends ServiceProvider
                 'ordername' => null
             ]);
 
-            DNSSECHelper::rectifyZone($record->domain->name);
+            DNSSECHelper::rectifyZone($domain->name);
 
         });
 
@@ -93,7 +93,7 @@ class EventServiceProvider extends ServiceProvider
             PowerdnsZone::where('domain_id', $domain->id)->delete();
             PowerdnsRecord::where('domain_id', $domain->id)->delete();
 
-            DNSSECHelper::rectifyZone($record->domain->name);
+            DNSSECHelper::rectifyZone($domain->name);
         });
 
         $updateSoa = function (PowerdnsRecord $record) {
