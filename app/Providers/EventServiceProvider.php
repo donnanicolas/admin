@@ -14,6 +14,8 @@ use App\PostfixDomain;
 use App\PostfixMailbox;
 use App\PostfixAlias;
 
+use App\Helpers\DNSSECHelper;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -82,11 +84,16 @@ class EventServiceProvider extends ServiceProvider
                 'disabled' => 0,
                 'ordername' => null
             ]);
+
+            DNSSECHelper::rectifyZone($record->domain->name);
+
         });
 
         PowerdnsDomain::deleted(function (PowerdnsDomain $domain) {
             PowerdnsZone::where('domain_id', $domain->id)->delete();
             PowerdnsRecord::where('domain_id', $domain->id)->delete();
+
+            DNSSECHelper::rectifyZone($record->domain->name);
         });
 
         $updateSoa = function (PowerdnsRecord $record) {
@@ -95,7 +102,6 @@ class EventServiceProvider extends ServiceProvider
                 return;
             }
 
-            // dd($record);
             $soa = $record->domain->records()->where('type', 'SOA')->first();
             $content = explode(' ', $soa->content);
             $serial = $content[2];
@@ -112,6 +118,8 @@ class EventServiceProvider extends ServiceProvider
             $content[2] = $newSerial;
             $soa->content = implode(' ', $content);
             $soa->save();
+
+            DNSSECHelper::rectifyZone($record->domain->name);
         };
 
         PowerdnsRecord::created($updateSoa);
