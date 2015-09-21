@@ -3,7 +3,7 @@
 @section('content')
 <div class="mdl-card email-pic mdl-cell mdl-cell--6-col">
     <div class="mdl-card__media mdl-color-text--grey-50">
-        <h3><a href="/postfix/domains">Mailboxes</a></h3>
+        <h3><a href="{{action("PostfixDomainController@index")}}">Mailboxes</a></h3>
     </div>
     <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
         <div class="minilogo minilogo-email"></div>
@@ -16,7 +16,7 @@
 <div class="mdl-card dns-pic mdl-cell mdl-cell--6-col">
     <div class="mdl-card__media mdl-color-text--grey-50">
         <h3>
-            <h3><a href="/powerdns/domains">DNS</a></h3>
+            <h3><a href="{{action("PowerdnsDomainController@index")}}">DNS</a></h3>
         </h3>
     </div>
     <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">

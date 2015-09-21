@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Helpers;
+
 class DNSSECHelper {
     public static function rectifyZone($domain)
     {
