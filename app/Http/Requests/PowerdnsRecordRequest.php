@@ -30,7 +30,7 @@ class PowerdnsRecordRequest extends Request
             'type' => "required|in:{$types}",
             'content' => 'required',
             'ttl' => 'required|integer',
-            'prio' => 'required|integer',
+            'prio' => 'required_if:type,MX|integer',
         ];
     }
 }

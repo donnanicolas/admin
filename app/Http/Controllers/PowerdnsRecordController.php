@@ -33,6 +33,12 @@ class PowerdnsRecordController extends Controller
      */
     public function store(PowerdnsDomain $domain, PowerdnsRecordRequest $request)
     {
+        if ( !$this->validateRecord($request->input('name'), $domain->name) ) {
+            return redirect()
+                ->action('PowerdnsRecordController@create', $domain->id)
+                ->withError('Records must end with the domain');
+        }
+
         $record = new PowerdnsRecord($request->all());
         $record->domain_id = $domain->id;
         $record->change_date = Carbon::now()->timestamp;
@@ -62,6 +68,12 @@ class PowerdnsRecordController extends Controller
      */
     public function update(PowerdnsDomain $domain, PowerdnsRecord $record, PowerdnsRecordRequest $request)
     {
+        if ( !$this->validateRecord($request->input('name'), $domain->name) ) {
+            return redirect()
+                ->action('PowerdnsRecordController@edit', [$domain->id, $record->id])
+                ->withErrors('Records must end with the domain');
+        }
+
         $record->fill($request->all());
         $record->domain_id = $domain->id;
         $record->change_date = Carbon::now()->timestamp;
@@ -84,5 +96,18 @@ class PowerdnsRecordController extends Controller
         }
         $record->delete();
         return redirect()->action('PowerdnsDomainController@show', $domain->id);
+    }
+
+    /**
+     * Validates that the record ends with the domainName
+     *
+     * @param string $recordName
+     * @param string $domainName
+     * @return bool
+     */
+    private function validateRecord($recordName, $domainName)
+    {
+        $expectedPosition = strlen($recordName) - strlen($domainName);
+        return strrpos($recordName, $domainName, 0) === $expectedPosition;
     }
 }
