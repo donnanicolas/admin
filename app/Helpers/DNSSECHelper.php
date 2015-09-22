@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Log;
+
 class DNSSECHelper {
     public static function rectifyZone($domain)
     {
