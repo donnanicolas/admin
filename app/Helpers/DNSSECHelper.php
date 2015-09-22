@@ -5,6 +5,9 @@ namespace App\Helpers;
 class DNSSECHelper {
     public static function rectifyZone($domain)
     {
-        exec("pdnssec rectify-zone $domain");
+        $op = array();
+        exec("pdnssec rectify-all-zones", $op);
+        Log::error('pdnssec');
+        Log::error($op);
     }
 }
