@@ -18,6 +18,7 @@ class PowerdnsRecord extends Model
         'PTR' => 'PTR',
         'SPF' => 'SPF',
         'SRV' => 'SRV',
+        'SOA' => 'SOA',
         'SSHFP' => 'SSHFP',
         'TXT' => 'TXT',
         'RP' => 'RP',
