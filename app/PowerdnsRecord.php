@@ -61,11 +61,6 @@ class PowerdnsRecord extends Model
         'ordername'
      ];
 
-     public function getNameAttribute()
-     {
-         return str_replace(".{$this->domain->name}", '', $this->attributes['name']);
-     }
-
      public function domain()
      {
          return $this->belongsTo('\App\PowerdnsDomain', 'domain_id');
