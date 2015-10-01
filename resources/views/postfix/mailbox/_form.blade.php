@@ -26,10 +26,6 @@
         {!! Form::password('repassword', ['class' => 'mdl-textfield__input']) !!}
         {!! Form::label('repassword', 'Repetir Contraseña:', ['class' => 'mdl-textfield__label']) !!}
     </div>
-    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-        {!! Form::checkbox('active', 1, 1, ['class' => 'mdl-switch__input']) !!}
-        <span class="mdl-switch__label">Activa</span>
-    </label>
 </div>
 <div class="mdl-card__actions mdl-card--border">
     {!! Form::submit($submitText, ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect']) !!}

@@ -66,6 +66,7 @@ class PostfixMailboxController extends Controller
         $mailbox->maildir = $request->input('username') . '/';
         $mailbox->created = Carbon::now();
         $mailbox->modified = Carbon::now();
+        $mailbox->active = true;
 
         $mailbox->save();
 

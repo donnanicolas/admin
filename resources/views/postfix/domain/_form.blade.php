@@ -27,10 +27,6 @@
         {!! Form::label('aliases', 'Alias:', ['class' => 'mdl-textfield__label']) !!}
         <span class="mdl-textfield__error">No es un número!</span>
     </div>
-    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-        {!! Form::checkbox('active', 1, 1, ['class' => 'mdl-switch__input']) !!}
-        <span class="mdl-switch__label">Activa</span>
-    </label>
 </div>
 <div class="mdl-card__actions mdl-card--border">
     {!! Form::submit($submitText, ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect']) !!}

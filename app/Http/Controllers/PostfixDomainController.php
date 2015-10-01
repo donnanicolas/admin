@@ -50,6 +50,7 @@ class PostfixDomainController extends Controller
     {
         $domain = new PostfixDomain($request->all());
         $domain->domain = $request->input('domain');
+        $domain->active = true;
         $domain->save();
         return redirect()->action('PostfixDomainController@index');
     }
