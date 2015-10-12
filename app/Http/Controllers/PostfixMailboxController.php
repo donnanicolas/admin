@@ -53,7 +53,6 @@ class PostfixMailboxController extends Controller
         }
 
         if ( !empty($errors) ) {
-
             return redirect()->action('PostfixMailboxController@create', [$domain->domain])
                 ->withErrors($errors)
                 ->withInput();

@@ -31,9 +31,14 @@
         <div class="admin-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="admin-drawer-header">
                 <img src="/images/avatars/avatar{{ $avatarId }}.png" class="admin-avatar">
-                <div class="admin-avatar-dropdown">
+                <div class="admin-avatar-dropdown" id="accbtn">
                     <span>{{ Auth::user()->email }}</span>
                 </div>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                  <li class="mdl-menu__item">
+                      <a href="/auth/logout">Logout</a>
+                  </li>
+                </ul>
             </header>
             <nav class="admin-navigation mdl-navigation mdl-color--blue-grey-800">
                 <a class="mdl-navigation__link" href="/home">
