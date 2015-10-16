@@ -33,6 +33,7 @@ class PowerdnsRecordController extends Controller
      */
     public function store(PowerdnsDomain $domain, PowerdnsRecordRequest $request)
     {
+        //If the record doesn't end in the domain don't continue
         if ( !$this->validateRecord($request->input('name'), $domain->name) ) {
             return redirect()
                 ->action('PowerdnsRecordController@create', $domain->id)

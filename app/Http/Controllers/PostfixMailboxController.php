@@ -42,6 +42,7 @@ class PostfixMailboxController extends Controller
         $errors = [];
         $exploded = explode('@', $request->input('username'), 2);
 
+        //If the mail is not from this domain return error
         if ( $exploded[1] != $domain->domain ) {
             $errors['username'] = 'Bad Domain';
         }
